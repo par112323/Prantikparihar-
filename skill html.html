@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Webpage - Prantik Singh</title>
+  <style>
+    :root{
+      --topbar-color: #FFD700; /* yellow color for top bar */
+      --sidebar-color: #87d3e6;
+      --footer-bg: #0f1724;
+      --accent: #000000;
+      --page-bg: #f7f7f7;
+      --content-bg: #ffffff;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;font-family: "Segoe UI", Roboto, Arial, sans-serif;}
+
+    body{
+      background:var(--page-bg);
+      color:#222;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* Top bar */
+    .topbar{
+      background:var(--topbar-color);
+      color:var(--accent);
+      padding:18px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:sticky;
+      top:0;
+      z-index:100;
+    }
+    .topbar .title{ font-weight:700; font-size:20px; letter-spacing:0.5px; text-align:center; }
+    .topbar .name{
+      position:absolute;
+      right:18px;
+      top:50%;
+      transform:translateY(-50%);
+      font-size:14px;
+      opacity:0.95;
+    }
+
+    /* Layout */
+    .container{
+      display:flex;
+      width:100%;
+      max-width:1200px;
+      margin:18px auto;
+      flex:1;
+    }
+
+    /* Sidebar */
+    .sidebar{
+      width:180px;
+      background:var(--sidebar-color);
+      padding:30px 16px;
+      min-height:420px;
+    }
+    .sidebar a{
+      display:block;
+      color:#0d2b2f;
+      margin:12px 0;
+      text-decoration:none;
+      font-size:14px;
+      font-weight:500;
+      opacity:0.9;
+      cursor:pointer;
+    }
+    .sidebar a:hover{
+      text-decoration:underline;
+    }
+
+    /* Main content */
+    .main{
+      flex:1;
+      background:var(--content-bg);
+      padding:30px 40px;
+      min-height:420px;
+    }
+    section{
+      display:none; /* hide all by default */
+    }
+    section.active{
+      display:block; /* show only active section */
+    }
+    section h2{
+      font-size:22px;
+      margin-bottom:14px;
+      color:#1e90ff;
+    }
+    section p, ul{ line-height:1.6; font-size:15px; }
+
+    /* Footer */
+    footer{
+      background:var(--footer-bg);
+      color: #dfe7ee;
+      padding:28px 20px;
+      text-align:center;
+      margin-top:22px;
+    }
+    footer p{ margin:6px 0; font-size:14px; }
+    footer a{ color:#6fb7ff; text-decoration:underline; margin:0 6px; font-size:14px; }
+
+    /* Responsive */
+    @media (max-width:760px){
+      .container{ flex-direction:column; }
+      .sidebar{ width:100%; display:flex; gap:10px; padding:12px; overflow:auto; }
+      .sidebar a{ white-space:nowrap; }
+      .topbar .name{ position:static; transform:none; margin-left:auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="title">My Webpage</div>
+    <div class="name">Praantik Singh</div>
+  </div>
+
+  <!-- Layout -->
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <a onclick="showSection('welcome')">Home</a>
+      <a onclick="showSection('about')">About me</a>
+      <a onclick="showSection('skills')">Skills</a>
+      <a onclick="showSection('experience')">Experience</a>
+      <a onclick="showSection('contact')">Contact</a>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main">
+      <!-- Welcome Section (Default) -->
+      <section id="welcome" class="active">
+        <h2>Welcome to My Webpage</h2>
+        <p></p>
+      </section>
+
+      <!-- About Section -->
+      <section id="about">
+        <h2>About Me</h2>
+        <p>Mera naam Praantik Singh hai, main B.Tech CSE ka student hoon. Mujhe web development aur programming pasand hai.</p>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+          <li>HTML, CSS, JavaScript</li>
+          <li>PHP, MySQL</li>
+          <li>Data Structures & Algorithms</li>
+        </ul>
+      </section>
+
+      <!-- Experience Section -->
+      <section id="experience">
+        <h2>Experience</h2>
+        <p>Maine ek Event Booking Website banayi hai jisme login/register, payment integration, aur admin panel hai.</p>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: praantik@example.com <br>
+        Phone: +91-9876543210</p>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Prantik Singh. All rights reserved.</p>
+    <p>Designed & Developed by Praantik Singh</p>
+    <p><a href="#">LinkedIn</a> | <a href="#">GitHub</a> | <a href="#">Instagram</a></p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function showSection(id){
+      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    }
+  </script>
+
+</body>
+</html>
